@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>What's the weather like?</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script type="text/javascript">
+      var myArray = [];
+      myArray.push($("#yourTextBox").val());
+      document.getElementById("city").innerHTML = "Paragraph changed!";
+    </script>
+  </head>
+  <style>
+    #grad1 {
+      position: fixed;
+      height: 100%;
+      background-color: red;
+      width: 100%;
+      background-image: linear-gradient(
+        to right,
+        rgb(219, 117, 219),
+        rgb(122, 185, 226),
+        rgb(122, 226, 226)
+      );
+    }
+    .more {
+      background-color: mediumturquoise;
+      background-image: linear-gradient(
+        to right,
+        rgb(226, 138, 37),
+        rgb(231, 204, 46),
+        rgb(238, 241, 22)
+      );
+      height: 100px;
+      font-family: Georgia;
+    }
+    .title {
+      padding-top: 30px;
+      color: navy;
+    }
+    .icon {
+      padding-right: 10px;
+      padding-top: 5px;
+      font-size: 30px;
+      color: maroon;
+    }
+    .btn {
+      padding-left: 10px;
+    }
+    .label {
+      padding-bottom: 10px;
+      color: slateblue;
+    }
+    .footer {
+      background-color: mediumturquoise;
+      background-image: linear-gradient(
+        to right,
+        rgb(226, 138, 37),
+        rgb(231, 204, 46),
+        rgb(238, 241, 22)
+      );
+      position: fixed;
+      top: 610px;
+      width: 1520px;
+    }
+  </style>
+  <body>
+    <div id="grad1">
+      <section class="more is-primary">
+        <div class="more-body">
+          <div class="container">
+            <h1 class="title">
+              Please Enter the name of city you want forcast for
+            </h1>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-offset-4 is-4">
+              <form method="POST" action="/displayWeather/">
+                <div class="field has-addons">
+                  <div class="control icon">
+                    <i class="fa fa-map-marker"></i>
+                  </div>
+                  <div class="control is-expanded">
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="City Name"
+                      name="city"
+                    />
+                  </div>
+                  <div class="control btn">
+                    <button
+                      class="button is-info"
+                      type="submit"
+                      id="yourTextBox"
+                    >
+                      Search
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- <footer class="footer">
+        </footer> -->
+    </div>
+  </body>
+</html>

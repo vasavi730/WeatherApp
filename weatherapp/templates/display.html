@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <style>
+    #grad1 {
+  height: 300px;
+  width: 100%;
+  background-color: red; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to right, rgb(219, 117, 219) , rgb(122, 185, 226) ,rgb(122, 226, 226));
+}
+    #week{
+    height: 500px;
+}
+</style>
+
+</head>
+
+<body id="grad1">
+    <div id="grad1" style="position: relative;">
+        <section>
+        	{% csrf_token %}
+            <div style="position: relative; left: 150px; top: 50px;">
+                <label style="font-weight: bold; font-size: 300%; text-shadow: 2px 2px 5px purple ;">{{city}}</label><br>
+            </div>
+            
+        </section>
+                    <div style="position: relative;left: 1000px;" id="week">
+                <a href="/home/"><button type="button" class="btn btn-success">Home</button></a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Update Me</button>
+            </div>
+       
+       <section>
+       </div>
+        	<form>
+        		<div class="container-fluid">
+              <div class="row">
+            {% for w in lst %}
+            
+                <div class="col">
+                  <div style="border: 2px solid black; border-radius: 12px; position: relative; left: 10px;">
+                    <label style="font-weight: bold; font-size: 100%;" >{{w.date}}</label><br>
+                    <img src="http://openweathermap.org/img/w/{{w.icon}}.png" alt="Image"><br>
+                    <label style="font-weight: bold; font-size: 100%;">Temperature: {{w.temp}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">Minimum temperature: {{w.mn}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">Maximum temperature: {{w.mx}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">Pressure: {{w.pressure}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">Humidity: {{w.hum}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">Description: {{w.desc}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">Speed of the wind: {{w.speed}}</label><br>
+    
+                </div>
+                </div>
+                 {% endfor %}
+                <!--
+                <div class="col-xl-2 col-lg-2 col-sm-2 col-md-2 col-12">
+                  <div style="border: 2px solid black; border-radius: 12px;  position: fixed; left: 250px; top: 400px;">
+                    <label style="font-weight: bold; font-size: 100%;" >{{w.date}}</label><br>
+                    <img src="http://openweathermap.org/img/w/{{w.icon}}.png" alt="Image"><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.temp}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.mn}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.mx}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.pressure}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.hum}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.desc}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.speed}}</label><br>
+                  </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-sm-2 col-md-2 col-12">
+                  <div style="border: 2px solid black; border-radius: 12px;  position: fixed; left: 450px; top: 400px;">
+                    <label style="font-weight: bold; font-size: 100%;" >{{w.date}}</label><br>
+                    <img src="http://openweathermap.org/img/w/{{w.icon}}.png" alt="Image"><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.temp}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.mn}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.mx}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.pressure}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.hum}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.desc}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.speed}}</label><br>
+                </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-sm-2 col-md-2 col-12">
+                  <div style=" border: 2px solid black; border-radius: 12px;  position: fixed; left: 675px; top: 400px;">
+                    <label style="font-weight: bold; font-size: 100%;" >{{w.date}}</label><br>
+                    <img src="http://openweathermap.org/img/w/{{w.icon}}.png" alt="Image"><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.temp}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.mn}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.mx}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.pressure}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.hum}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.desc}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.speed}}</label><br>
+                </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-sm-2 col-md-2 col-12">
+                  <div style="border: 2px solid black; border-radius: 12px; position: fixed; left: 875px; top: 400px; ">
+                    <label style="font-weight: bold; font-size: 100%;" >{{w.date}}</label><br>
+                    <img src="http://openweathermap.org/img/w/{{w.icon}}.png" alt="Image"><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.temp}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.mn}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.mx}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.pressure}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.hum}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.desc}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.speed}}</label><br>
+                </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-sm-2 col-md-2 col-12">
+                  <div style="border: 2px solid black; border-radius: 12px;  position: fixed; left: 1075px; top: 400px;">
+                    <label style="font-weight: bold; font-size: 100%;" >{{w.date}}</label><br>
+                    <img src="http://openweathermap.org/img/w/{{w.icon}}.png" alt="Image"><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.temp}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.mn}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.mx}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.pressure}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.hum}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.desc}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.speed}}</label><br>
+                </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-sm-2 col-md-2 col-12">
+                  <div style="border: 2px solid black; border-radius: 12px;  position: fixed; left: 1275px; top: 400px;">
+                    <label style="font-weight: bold; font-size: 100%;" >{{w.date}}</label><br>
+                    <img src="http://openweathermap.org/img/w/{{w.icon}}.png" alt="Image"><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.temp}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.mn}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.mx}}<sup>o</sup>c</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.pressure}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.hum}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.desc}}</label><br>
+                    <label style="font-weight: bold; font-size: 100%;">{{w.speed}}</label><br>
+                </div>
+                </div>
+              </div>
+              -->
+            </div>
+
+            </div>
+             
+            
+            
+            
+            
+            
+             
+            
+            
+           
+        </form>
+
+        </section>
+    </div>
+    
+    
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form method="POST" action="/sendmail/">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <input type="email" name="t" id="number" class="form-control" placeholder="Enter Email">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-danger">Submit</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+
+</body>
+</html>
+</body>
+</html>
